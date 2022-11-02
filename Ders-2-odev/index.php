@@ -1,78 +1,105 @@
 <html>
+<head>
+<title>Ders - 2 Ödev</title>
+</head>
+<style>
+html{
+  scroll-behavior:smooth;
+}
+body{
+  background-color: #252525;
+  color: #f2f2f2;
+  align-items: center;
+  text-align: center;
+}
+</style>
 <body>
-<h2>UYGULAMA - 1</h2>
-<h4>Aşağıda verilen yerlere sayı giriniz</h4>
+    <h1> Uygulama 1</h1>
+<?php
 
-<form action="index.php" method="post">
-Faktöriyelinin alınmasını istediğiniz sayıyı giriniz:
-<input type="number" name="sayi1"><br>
-Girilen sayıya kadar tüm sayıların karesinin yazılmasını istediğiniz sayıyı giriniz:
-<input type="number" name="sayi2"><br>
-Vize notunuzu giriniz:
-<input type="number" name="sayi3"><br>
-Final notunuzu giriniz:
-<input type="number" name="sayi4"><br>
-Faktöriyel hesaplamasının gerçekleşmesini istediğiniz sayıyı giriniz:
-<input type="number" name="sayi5"><br>
-<input type="submit">
-</form>
+use uygulama1 as GlobalClass;
+
+    class uygulama1{
+
+        public function __construct(){
+            echo "Construct metodu devreye girdi.";
+            echo "<br>";
+        }
+
+        public function __destruct()
+        {
+            echo "Destruct metodu devreye girdi.";
+            echo "<br><br>";
+        }
+
+        public function puan($vize,$final){
 
 
+
+            $notOrt=$vize*0.4 + $final*0.7;
+            if ($notOrt>=60) {
+                echo "Dersten geçtiniz, notunuz:" . $notOrt;
+                echo "<br><br>";
+            }
+            else{
+                echo "Dersten kaldınız, notunuz:" . $notOrt;
+                echo "<br><br>";
+            }
+        }
+
+        public function factorial($x){
+            $sonuc=1;
+           for ($i=1; $i <= $x; $i++) {
+            $sonuc=$i*$sonuc;
+           }
+           echo "$x sayısının faktöriyeli:" . $sonuc;
+           echo "<br>";
+        }
+    }
+
+    $itsClass = new uygulama1();
+    $itsClass->puan(rand(0,100),rand(0,100));
+    $itsClass->factorial(rand(1,100));
+
+?>
+
+    <h1> Uygulama 2</h1>
 
 <?php
-//UYGULAMA - 1
-class sonuc
-{
-    public $sayi1 = 7;
-    public $degisken2 = 5;
+   class uygulama2 {
+      public $sayi1;
+      public $sayi2;
+      public $sayi3;
 
 
-    public function __construct($degisken1, $degisken2, factorial)
-    {
-      $gdegisken1 = $degisken1 * $degisken1;
-      for ($x=$degisken2; $x>=1; $x--)
-{
-  $factorial = $factorial * $x;
-}
-    }
-}
-
-//print_r($sonuc);
+      public function __construct($gsayi1,$gsayi2,$gsayi3)
+      {
+       $sayi1=$gsayi1;
+       $sayi2=$gsayi2;
+       $sayi3=$gsayi3;
+      }
 
 
-//UYGULAMA - 2
-class Metot{
-  public $factorial = 1;
-  public $notOrt = $sayi3 * 0,4 + $sayi4 *0,6;
+      public function kareAlma($kareAlma){
+       $kareAlma = rand(2,15);
+       $kareAlma2 = $kareAlma*$kareAlma;
+      }
 
-public function __construct()
-{
-  //ortalama hesaplama
-  if ($notOrt>=50) {
-    echo "Geçtiniz.";
-  } else {
-    echo "Kaldınız.";
-  }
-  //faktöriyel hesaplama
-  for ($x=$sayi5; $x>=1; $x--)
-  {
-  $factorial = $factorial * $x;
-  }
-  echo "Merhaba, bu bir karşılama mesajıdır.";
-}
-public function __destruct()
-{
-  echo "Bu mesajı görüyorsanız, destruct metodu devreye girmiştir.";
-}
+       public function faktorielArtis($giris){
+       for ($i=0; $i < $giris; $i++) {
+           echo $i*$i;
+           echo "<br>";
+       }
+       }
+   }
 
-}
+   $myclass = new uygulama2(rand(1,10),rand(1,10),rand(1,10));
+   $myclass ->faktorielArtis(rand(2,10));
+   $kareAlma = rand(2,15);
+   $kareAlma2 = $kareAlma*$kareAlma;
+   echo "<br> $kareAlma2 <br>";
 
+   ?>
 
-
-
-
-
-
- ?>
 </body>
 </html>
