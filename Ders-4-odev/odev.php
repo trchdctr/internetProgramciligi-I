@@ -47,39 +47,40 @@ echo "<br>";
 $nesne1->metot2();
 echo "<br>";
 
+
 // Uygulama-2
 
 
 
 class Uygulama2{
-    public function __construct(){
-        echo "Construct metodu çalıştı.";
-        return $this;
+    public function __construct($uyg2Deger1){
+        $uyg2Deger1="Construct metodu çalıştı.";
+        return $this->$uyg2Deger1;
     }
 
-    final public function metota(){
-        echo "Final metodu çalıştı.";
-        return $this;
+    final public function finalMetot1($uyg2Deger1_1){
+        $uyg2Deger1_1= "Final metodu çalıştı.";
+        return;
     }
     }
 
     class Miras1 extends Uygulama2{
-        public function metota(){
-            echo "Miras1 metodu çalıştı.";
-            return $this->metota();
+        public function finalMetot1($uyg2Deger2){
+            $uyg2Deger2 = "Miras1 metodu çalıştı.";
+            return $this->finalMetot1();
         }
     }
-    final class Miras2 extends Miras1{
-        public function metota($deger){
-            echo "Override edildi.";
-            return $this;
+    final class Miras2 extends Uygulama2{
+        public function finalMetot1($uyg2Deger2){
+            $uyg2Deger2 = "Override edildi.";
+            return $this->finalMetot1();
         }
-
-    }
-
 class Miras3 extends Miras2{
-    public function metot1(){
-        echo "Son durumda miras3 sınıfı çalıştı.";
+    public function finalMetot1($uyg2Deger3){
+        $uyg2Deger3 = "Miras 1 override edildi, son durumda da bu metot çalıştı.";
+        return $this->finalMetot1();
     }
+
+
 }
 ?>
